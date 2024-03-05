@@ -222,9 +222,9 @@ def test_pandas_apply_args_deprecation():
         df.progress_apply(lambda x: None, 1)  # 1 shall cause a warning
         # Check deprecation message
         res = our_file.getvalue()
-        assert all([i in res for i in (
+        assert all(i in res for i in (
             "TqdmDeprecationWarning", "not supported",
-            "keyword arguments instead")])
+            "keyword arguments instead"))
 
 
 @with_setup(pretest, posttest)
