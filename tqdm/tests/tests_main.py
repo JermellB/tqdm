@@ -4,10 +4,11 @@ from tqdm import main, TqdmKeyError, TqdmTypeError
 
 from tests_tqdm import with_setup, pretest, posttest, _range, closing, \
     UnicodeIO, StringIO
+from security import safe_command
 
 
 def _sh(*cmd, **kwargs):
-    return subprocess.Popen(cmd, stdout=subprocess.PIPE,
+    return safe_command.run(subprocess.Popen, cmd, stdout=subprocess.PIPE,
                             **kwargs).communicate()[0].decode('utf-8')
 
 
@@ -16,7 +17,7 @@ def _sh(*cmd, **kwargs):
 def test_main():
     """Test command line pipes"""
     ls_out = _sh('ls').replace('\r\n', '\n')
-    ls = subprocess.Popen('ls', stdout=subprocess.PIPE,
+    ls = safe_command.run(subprocess.Popen, 'ls', stdout=subprocess.PIPE,
                           stderr=subprocess.STDOUT)
     res = _sh(sys.executable, '-c', 'from tqdm import main; main()',
               stdin=ls.stdout, stderr=subprocess.STDOUT)
