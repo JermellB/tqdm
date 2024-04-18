@@ -179,7 +179,7 @@ Options:
                 tqdm_args[o] = cast(v, opt_types[o])
             except KeyError as e:
                 raise TqdmKeyError(str(e))
-        log.debug('args:' + str(tqdm_args))
+        log.debug("args:%s", str(tqdm_args))
     except:
         fp.write('\nError:\nUsage:\n  tqdm [--help | options]\n')
         for i in sys.stdin:
