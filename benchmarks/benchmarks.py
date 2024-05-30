@@ -1,6 +1,5 @@
 # Write the benchmarking functions here.
 # See "Writing benchmarks" in the asv docs for more information.
-from __future__ import division
 
 
 class FractionalOverheadSuite:

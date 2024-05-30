@@ -18,7 +18,6 @@ Options:
                          NOTSET
   -d, --debug-trace      Print lots of debugging information (-D NOTSET)
 """
-from __future__ import print_function
 from argopt import argopt
 import logging
 import subprocess

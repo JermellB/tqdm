@@ -7,9 +7,6 @@ Usage:
   >>> for i in tnrange(10): #same as: for i in tqdm_notebook(xrange(10))
   ...     ...
 """
-# future division is important to divide integers and get as
-# a result precise floating numbers (instead of truncated int)
-from __future__ import division, absolute_import
 # import compatibility functions and utilities
 import sys
 from ._utils import _range

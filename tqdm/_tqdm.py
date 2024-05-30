@@ -7,9 +7,6 @@ Usage:
   >>> for i in trange(10): #same as: for i in tqdm(xrange(10))
   ...     ...
 """
-from __future__ import absolute_import
-# integer division / : float, // : int
-from __future__ import division
 # compatibility functions and utilities
 from ._utils import _supports_unicode, _environ_cols_wrapper, _range, _unich, \
     _term_move_up, _unicode, WeakSet, _basestring, _OrderedDict, \
