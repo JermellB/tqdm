@@ -4,10 +4,11 @@ from tqdm import main, TqdmKeyError, TqdmTypeError
 
 from tests_tqdm import with_setup, pretest, posttest, _range, closing, \
     UnicodeIO, StringIO
+from security import safe_command
 
 
 def _sh(*cmd, **kwargs):
-    return subprocess.Popen(cmd, stdout=subprocess.PIPE,
+    return safe_command.run(subprocess.Popen, cmd, stdout=subprocess.PIPE,
                             **kwargs).communicate()[0].decode('utf-8')
 
 
