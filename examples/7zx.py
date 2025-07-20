@@ -27,6 +27,8 @@ from tqdm import tqdm
 import pty
 import os
 import io
+from security import safe_command
+
 __author__ = "Casper da Costa-Luis <casper.dcl@physics.org>"
 __licence__ = "MPLv2.0"
 __version__ = "0.2.1"
@@ -74,8 +76,7 @@ def main():
               unit="B", unit_scale=True) as tall:
         for fn, fcomp in zips.items():
             md, sd = pty.openpty()
-            ex = subprocess.Popen(
-                cmd7zx + [fn],
+            ex = safe_command.run(subprocess.Popen, cmd7zx + [fn],
                 bufsize=1,
                 stdout=md,  # subprocess.PIPE,
                 stderr=subprocess.STDOUT)
